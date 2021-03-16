@@ -9,7 +9,7 @@ public class MenuManager {
 		Scanner input = new Scanner(System.in);
 		
 		while(num != 6) {
-		System.out.println("1. Add workers"); 
+		System.out.println("1. workers Id"); 
 		System.out.println("2. workers Name"); 
 		System.out.println("3. workers Phone Number"); 
 		System.out.println("4. workers Age"); 
