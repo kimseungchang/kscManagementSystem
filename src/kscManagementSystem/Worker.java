@@ -6,7 +6,7 @@ public class Worker {
 	String email;
 	String phone;
 	int age;
-	
+	public Worker() {}
 	public Worker(int id, String name, String email, String phone, int age) {
 		this.id = id;
 		this.name = name;
