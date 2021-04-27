@@ -4,7 +4,9 @@ import java.util.ArrayList;//라이브러리 선언
 import java.util.Scanner;
 
 import worker.BusanWorker;
+import worker.JinjuWorker;
 import worker.Worker;
+import worker.Workerlocation;
 
 public class WorkerManager {
 	ArrayList<Worker> workers=new ArrayList<Worker>();//worker 클래스의 리스트를 만든다.
@@ -24,24 +26,26 @@ public class WorkerManager {
 		System.out.println("Selet Worker location between 1~4:");
 		location=input.nextInt();
 		if(location==1) {//location에 따른 if문
-			worker = new Worker();
+			worker = new Worker(Workerlocation.Seoul);
 			worker.getUserInput(input);//worker에 있는 getUserInput 실행.
 			workers.add(worker);//worker 정보 추가
 			return;
 		}
 		else if(location==2) {
-			worker = new BusanWorker();
+			worker = new BusanWorker(Workerlocation.Busan);
 			worker.getUserInput(input);
 			workers.add(worker);//worker 정보 추가
 			return;
 		}
 		else if(location==3) {
-			worker = new Worker();
+			worker = new JinjuWorker(Workerlocation.Jinju);
+			worker.getUserInput(input);
 			workers.add(worker);//worker 정보 추가
 			return;
 		}
 		else if(location==4) {
 			worker = new Worker();
+			worker.getUserInput(input);
 			workers.add(worker);//worker 정보 추가
 			return;
 		}

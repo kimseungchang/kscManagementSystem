@@ -11,9 +11,12 @@ public class Worker {//Worker 클래스 생성
 	protected int age;
 
 	public Worker() {// Worker 생성자 선언
-		
+
 	}
-	
+	public Worker(Workerlocation location) {// Worker 생성자 선언
+		this.location=location;
+	}
+
 	public Worker(int id, String name, String email, String phone, int age) {
 		//worker 생성자 선언, 객체 초기화
 		this.id = id;//this 키워드를 사용해 위의 id와 이곳에서의 id를 구분한다.
@@ -22,6 +25,17 @@ public class Worker {//Worker 클래스 생성
 		this.phone = phone;
 		this.age = age;
 	}
+
+	public Worker(Workerlocation location, int id, String name, String email, String phone, int age) {
+		//worker 생성자 선언, 객체 초기화
+		this.id = id;//this 키워드를 사용해 위의 id와 이곳에서의 id를 구분한다.
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.age = age;
+		this.location=location;//생성자에 location 추가
+	}
+
 	//위에 각각에 대한 setters, getters 함수가 생성
 	public Workerlocation getLocation() {
 		return location;
@@ -70,29 +84,46 @@ public class Worker {//Worker 클래스 생성
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
+
 	public void printInfo() {//함수 생성
-		System.out.println("id:" + id +" name:" + name +" email:" + email +" phone:" + phone +" age:" + age);
+		String slocation ="none";
+		switch(this.location) {//switch문을 이용해 출력되는 내용 다르게 한다.
+		case Seoul:
+			slocation="본사";
+			break;
+		case Busan:
+			slocation="2호점";
+			break;
+		case Jinju:
+			slocation="3호점";
+			break;
+		case Gwangju:
+			slocation="4호점";
+			break;
+		default:
+
+		}
+		System.out.println("location:"+ slocation +" id:" + id +" name:" + name +" email:" + email +" phone:" + phone +" age:" + age);
 		//id, name, email. phone, age 출력
-	
+
 	}
 	public void getUserInput(Scanner input) {
 		System.out.print("Worker ID:");
 		int id = input.nextInt();//객체 필드에 넣어준다.
 		this.setId(id);//객체에 대한 값 설정
-		
+
 		System.out.print("Worker name:");
 		String name = input.next();
 		this.setName(name);
-		
+
 		System.out.print("Email address:");
 		String email = input.next();
 		this.setEmail(email);
-		
+
 		System.out.print("Phone number:");
 		String phone = input.next();
 		this.setPhone(phone);
-		
+
 		System.out.print("Worker age:");
 		int age = input.nextInt();
 		this.setAge(age);
