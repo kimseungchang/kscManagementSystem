@@ -4,6 +4,7 @@ import java.util.ArrayList;//라이브러리 선언
 import java.util.Scanner;
 
 import worker.BusanWorker;
+import worker.GwangjuWorker;
 import worker.JinjuWorker;
 import worker.Worker;
 import worker.Workerlocation;
@@ -44,7 +45,7 @@ public class WorkerManager {
 			return;
 		}
 		else if(location==4) {
-			worker = new Worker();
+			worker = new GwangjuWorker(Workerlocation.Gwangju);
 			worker.getUserInput(input);
 			workers.add(worker);//worker 정보 추가
 			return;

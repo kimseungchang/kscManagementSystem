@@ -86,7 +86,7 @@ public class Worker {//Worker 클래스 생성
 	}
 
 	public void printInfo() {//함수 생성
-		String slocation ="none";
+		String slocation ="none";//slocation 생성
 		switch(this.location) {//switch문을 이용해 출력되는 내용 다르게 한다.
 		case Seoul:
 			slocation="본사";
@@ -104,7 +104,7 @@ public class Worker {//Worker 클래스 생성
 
 		}
 		System.out.println("location:"+ slocation +" id:" + id +" name:" + name +" email:" + email +" phone:" + phone +" age:" + age);
-		//id, name, email. phone, age 출력
+		//location, id, name, email. phone, age 출력
 
 	}
 	public void getUserInput(Scanner input) {
