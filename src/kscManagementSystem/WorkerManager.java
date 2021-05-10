@@ -6,48 +6,50 @@ import java.util.Scanner;
 import worker.BusanWorker;
 import worker.GwangjuWorker;
 import worker.JinjuWorker;
+import worker.SeoulWorker;
 import worker.Worker;
+import worker.WorkerInput;
 import worker.Workerlocation;
 
 public class WorkerManager {
-	ArrayList<Worker> workers=new ArrayList<Worker>();//worker 클래스의 리스트를 만든다.
+	ArrayList<WorkerInput> workers=new ArrayList<WorkerInput>();//WorkerInput 으로 이름 바꿨다.
 	Scanner input;
 	WorkerManager(Scanner input){//WorkerManager 생성자 선언
 		this.input = input;//모든 메소드에서 input 사용할 수 있게 한다.
 	}
 	
-	public void addWorker() {
+	public void addWorker() {//worker 추가
 		int location=0;
-		Worker worker;
+		WorkerInput workerInput;//WorkerInput으로 rename 했다.
 		while(location !=1 && location !=2 && location !=3 && location !=4) {//1,2,3,4가 아니면 반복
 		System.out.println("1. Seoul");
 		System.out.println("2. Busan");
 		System.out.println("3. Jinju");
 		System.out.println("4. Gwangju");
 		System.out.println("Selet Worker location between 1~4:");
-		location=input.nextInt();
+		location=input.nextInt();//콘솔에서 받은 값을 정수로 사용
 		if(location==1) {//location에 따른 if문
-			worker = new Worker(Workerlocation.Seoul);
-			worker.getUserInput(input);//worker에 있는 getUserInput 실행.
-			workers.add(worker);//worker 정보 추가
+			workerInput = new SeoulWorker(Workerlocation.Seoul);//SeoulWorker 으로 이름 바꿨다.
+			workerInput.getUserInput(input);//workerInput으로 이름 바꿨다.
+			workers.add(workerInput);//worker 정보 추가
 			return;
 		}
 		else if(location==2) {
-			worker = new BusanWorker(Workerlocation.Busan);
-			worker.getUserInput(input);
-			workers.add(worker);//worker 정보 추가
+			workerInput = new BusanWorker(Workerlocation.Busan);
+			workerInput.getUserInput(input);//worker에 있는 getUserInput 실행.
+			workers.add(workerInput);//worker 정보 추가
 			return;
 		}
 		else if(location==3) {
-			worker = new JinjuWorker(Workerlocation.Jinju);
-			worker.getUserInput(input);
-			workers.add(worker);//worker 정보 추가
+			workerInput = new JinjuWorker(Workerlocation.Jinju);
+			workerInput.getUserInput(input);//worker에 있는 getUserInput 실행.
+			workers.add(workerInput);//worker 정보 추가
 			return;
 		}
 		else if(location==4) {
-			worker = new GwangjuWorker(Workerlocation.Gwangju);
-			worker.getUserInput(input);
-			workers.add(worker);//worker 정보 추가
+			workerInput = new GwangjuWorker(Workerlocation.Gwangju);
+			workerInput.getUserInput(input);//worker에 있는 getUserInput 실행.
+			workers.add(workerInput);//worker 정보 추가
 			return;
 		}
 		else {
@@ -59,9 +61,9 @@ public class WorkerManager {
 
 	}
 
-	public void deleteWorker() {
+	public void deleteWorker() {//worker 정보 제거
 		System.out.print("Worker ID:");
-		int workerId = input.nextInt();
+		int workerId = input.nextInt();//콘솔에서 받은 값을 정수로 사용
 		int index=-1;
 		for(int i=0;i<workers.size();i++) {//workers의 크기만큼 반복
 			if(workers.get(i).getId()==workerId) {//workerId 같으면 실행
@@ -81,12 +83,12 @@ public class WorkerManager {
 		
 	}
 
-	public void editWorker() {
+	public void editWorker() {//worker 수정
 		System.out.print("Worker ID:");
-		int workerId = input.nextInt();
+		int workerId = input.nextInt();//콘솔에서 받은 값을 정수로 사용
 		for(int i=0;i<workers.size();i++) {//workers의 크기만큼 반복
-			Worker worker=workers.get(i);//worker에 workers.get(i); 저장
-		if(worker.getId()==workerId) {//workerId 가 같다면 실행
+			WorkerInput workerInput=workers.get(i);//workerInput으로 이름 바꿨다.//worker에 workers.get(i); 저장
+		if(workerInput.getId()==workerId) {//workerInput으로 이름 바꿨다.//workerId 가 같다면 실행
 			int num=0;
 			while(num != 6) {
 				System.out.println("1. Edit Id"); 
@@ -100,27 +102,27 @@ public class WorkerManager {
 				if(num==1) {
 					System.out.print("Worker ID:");
 					int id=input.nextInt();//id를 int로 받아드린다.
-					worker.setId(id);//id를 넣는다.
+					workerInput.setId(id);//id를 넣는다.
 				}
 				else if(num==2) {
 					System.out.print("Worker name:");
-					String name=input.next();
-					worker.setName(name);
+					String name=input.next();//콘솔에서 받은 값을 문자로 사용
+					workerInput.setName(name);//name 저장
 				}
 				else if(num==3) {
 					System.out.print("Email address:");
-					String email=input.next();
-					worker.setEmail(email);
+					String email=input.next();//콘솔에서 받은 값을 문자로 사용
+					workerInput.setEmail(email);//email 저장
 				}
 				else if(num==4) {
 					System.out.print("Phone number:");
-					String phone=input.next();
-					worker.setPhone(phone);
+					String phone=input.next();//콘솔에서 받은 값을 문자로 사용
+					workerInput.setPhone(phone);//phone 저장
 				}
 				else if(num==5) {
 					System.out.print("Worker Age:");
-					int age=input.nextInt();
-					worker.setAge(age);
+					int age=input.nextInt();//콘솔에서 받은 값을 정수로 사용
+					workerInput.setAge(age);//age 저장
 				}
 				else {
 					continue;
@@ -131,9 +133,7 @@ public class WorkerManager {
 	}
 }
 
-	public void viewWorkers() {
-//		System.out.print("Worker ID:");
-//		int workerId = input.nextInt();
+	public void viewWorkers() {//worker 정보 출력
 		System.out.println("# of registered workers:"+workers.size());
 		for(int i=0;i<workers.size();i++) {//workers의 크기만큼 반복
 			workers.get(i).printInfo();//printInfo 출력
