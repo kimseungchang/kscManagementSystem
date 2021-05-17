@@ -2,7 +2,9 @@ package worker;
 
 import java.util.Scanner;
 
-public abstract class Worker {//Worker 클래스 생성, Worker라는 객체를 생성하지 않는다.
+import exception.EmailFormatException;
+
+public abstract class Worker implements WorkerInput {//implements WorkerInput 해준다.
 	protected Workerlocation location=Workerlocation.Seoul;
 	protected int id;//변수 선언
 	protected String name;
@@ -65,7 +67,10 @@ public abstract class Worker {//Worker 클래스 생성, Worker라는 객체를 생성하지 �
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) throws EmailFormatException{//email 관련 조건 추가
+		if(!email.contains("@") && !email.equals("")) {//email에 @가 없거나 비어있다면
+			throw new EmailFormatException();//객체 생성해 오류 던진다.
+		}
 		this.email = email;
 	}
 
@@ -86,5 +91,62 @@ public abstract class Worker {//Worker 클래스 생성, Worker라는 객체를 생성하지 �
 	}
 
 	public abstract void printInfo();//추상 메소드 선언.
+
+	public void setWorkerID(Scanner input) {//setWorkerID 함수 생성
+		System.out.print("Worker ID:");
+		int id=input.nextInt();//id를 int로 받아드린다.
+		this.setId(id);//id를 넣는다.
+	}
+
+	public void setWorkerName(Scanner input) {//setWorkerName 함수 생성
+		System.out.print("Worker name:");
+		String name=input.next();//콘솔에서 받은 값을 문자로 사용
+		this.setName(name);//name 저장
+	}
+
+	public void setWorkerEmail(Scanner input) {//setWorkerEmail 함수 생성
+		String email="";
+		while(!email.contains("@")) {//email에 @ 포함이 안됬다면
+			System.out.print("Email address:");
+			email=input.next();//콘솔에서 받은 값을 문자로 사용
+			try {//예외 검사
+				this.setEmail(email);
+			} catch (EmailFormatException e) {//예외 일 때 실행
+				System.out.println("Incorrect Email Format. put the e-mail address that contains @");
+			}
+		}
+	}
+
+	public void setWorkerPhone(Scanner input) {//setWorkerPhone 함수 생성
+		System.out.print("Phone number:");
+		String phone=input.next();//콘솔에서 받은 값을 문자로 사용
+		this.setPhone(phone);//phone 저장
+	}
+
+	public void setWorkerAge(Scanner input) {//setWorkerAge 함수 생성
+		System.out.print("Worker Age:");
+		int age=input.nextInt();//콘솔에서 받은 값을 정수로 사용
+		this.setAge(age);//age 저장
+	}
+
+	public String getLocationString() {
+		String slocation ="none";
+		switch(this.location) {//switch문을 이용해 출력되는 내용 다르게 한다.
+		case Seoul:
+			slocation="본사";
+			break;
+		case Busan:
+			slocation="2호점";
+			break;
+		case Jinju:
+			slocation="3호점";
+			break;
+		case Gwangju:
+			slocation="4호점";
+			break;
+		default:	
+		}
+		return slocation;
+	}
 
 }
