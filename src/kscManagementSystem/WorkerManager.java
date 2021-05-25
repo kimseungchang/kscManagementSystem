@@ -1,20 +1,24 @@
 package kscManagementSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;//라이브러리 선언
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import worker.BusanWorker;
 import worker.GwangjuWorker;
 import worker.JinjuWorker;
 import worker.SeoulWorker;
-import worker.Worker;
 import worker.WorkerInput;
 import worker.Workerlocation;
 
-public class WorkerManager {
+public class WorkerManager implements Serializable {//Serializable 구현하겠다.
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3627323536911399727L;//serialVersionUID 추가
+	
 	ArrayList<WorkerInput> workers=new ArrayList<WorkerInput>();//WorkerInput 으로 이름 바꿨다.
-	Scanner input;
+	transient Scanner input;//저장하고 싶지 않다.
 	WorkerManager(Scanner input){//WorkerManager 생성자 선언
 		this.input = input;//모든 메소드에서 input 사용할 수 있게 한다.
 	}

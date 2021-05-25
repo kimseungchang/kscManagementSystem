@@ -1,10 +1,16 @@
 package worker;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.EmailFormatException;
 
-public abstract class Worker implements WorkerInput {//implements WorkerInput 해준다.
+public abstract class Worker implements WorkerInput, Serializable {//Serializable 구현하겠다.
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1727709034413491035L;//serialVersionUID 추가
+	
 	protected Workerlocation location=Workerlocation.Seoul;
 	protected int id;//변수 선언
 	protected String name;
