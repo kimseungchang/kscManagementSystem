@@ -7,11 +7,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MenuSelection extends JFrame {//JFrame 상속받는다.
+import listener.ButtonAddListener;
+import listener.ButtonViewListener;
+
+public class MenuSelection extends JPanel {//JPanel 상속받는다.
 	
-	public MenuSelection() {//MenuSelection 생성자 생성
-		this.setSize(300,300);//크기 설정
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//창 닫으면 프로그램 종료
+	WindowFrame frame;
+	
+	public MenuSelection(WindowFrame frame) {//MenuSelection 생성자 생성
+		this.frame = frame;
+		
+		this.setLayout(new BorderLayout());//기본 default를 BorderLayout으로 변경
 		
 		JPanel panel1 = new JPanel();//패널 선언
 		JPanel panel2 = new JPanel();//패널 선언
@@ -23,6 +29,9 @@ public class MenuSelection extends JFrame {//JFrame 상속받는다.
 		JButton button4 = new JButton("Delet Worker");//버튼 생성
 		JButton button5 = new JButton("Exit Program");//버튼 생성
 		
+		button1.addActionListener(new ButtonAddListener(frame));//Listener 연결
+		button2.addActionListener(new ButtonViewListener(frame));//Listener 연결
+		
 		panel1.add(label);//label 패널에 추가
 		panel2.add(button1);//버튼 패널에 추가
 		panel2.add(button2);//버튼 패널에 추가
@@ -32,6 +41,5 @@ public class MenuSelection extends JFrame {//JFrame 상속받는다.
 		
 		this.add(panel1,BorderLayout.NORTH);//NORTH에 위치 시킨다.
 		this.add(panel2,BorderLayout.CENTER);//CENTER에 위치 시킨다.
-		this.setVisible(true);//윈도우 창에 띄우기
 	}
 }

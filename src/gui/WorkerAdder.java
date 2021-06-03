@@ -9,9 +9,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class WorkerAdder extends JFrame {//JFrame 상속받는다.
+public class WorkerAdder extends JPanel {//JPanel 상속받는다.
+	
+	WindowFrame frame;
 
-	public WorkerAdder() {
+	public WorkerAdder(WindowFrame frame) {//WorkerAdder 생성자 생성
+		this.frame = frame;
+		
 		JPanel panel = new JPanel();//패널 생성
 		panel.setLayout(new SpringLayout());
 
@@ -50,9 +54,7 @@ public class WorkerAdder extends JFrame {//JFrame 상속받는다.
 		
 		SpringUtilities.makeCompactGrid(panel,6,2,6,6,6,6);
 		
-		this.setSize(300,300);//크기 설정
-		this.setContentPane(panel);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//창 닫으면 프로그램 종료
+		this.add(panel);
 		this.setVisible(true);//윈도우 창에 띄우기
 	}
 }

@@ -12,11 +12,19 @@ public interface WorkerInput {//인터페이스 생성
 	
 	public void setId(int id);
 	
+	public String getName();
+	
 	public void setName(String name);
+	
+	public String getEmail();
 	
 	public void setEmail(String email) throws EmailFormatException;
 	
+	public String getPhone();
+	
 	public void setPhone(String phone);
+	
+	public int getAge();
 	
 	public void setAge(int age);
 	

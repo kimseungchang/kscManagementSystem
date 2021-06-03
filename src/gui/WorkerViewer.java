@@ -1,13 +1,27 @@
 package gui;
 
+import java.util.Vector;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class WorkerViewer extends JFrame {//JFrame 상속받는다.
+import kscManagementSystem.WorkerManager;
+import worker.WorkerInput;
 
-	public WorkerViewer() {
+public class WorkerViewer extends JPanel {//JPanel 상속받는다.
+	
+	WindowFrame frame;
+	WorkerManager workerManager;
+
+	public WorkerViewer(WindowFrame frame,	WorkerManager workerManager) {//WorkerViewer 생성자 생성
+		this.frame = frame;
+		this.workerManager = workerManager;
+		
+		System.out.println("***"+workerManager.size()+"***");
+		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("ID");
 		model.addColumn("Name");
@@ -16,12 +30,20 @@ public class WorkerViewer extends JFrame {//JFrame 상속받는다.
 		model.addColumn("Age");
 		model.addColumn("Contect Info.");
 		
+		for(int i=0;i<workerManager.size();i++) {//workerManager 크기만큼 반복한다.
+			Vector row = new Vector();//Vector 로 넣어준다.
+			WorkerInput wo = workerManager.get(i);
+			row.add(wo.getId());//내용 포함시킨다.
+			row.add(wo.getName());
+			row.add(wo.getEmail());
+			row.add(wo.getPhone());
+			row.add(wo.getAge());
+			model.addRow(row);
+		}
+		
 		JTable table = new JTable(model);
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
-		this.setSize(300,300);//크기 설정
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//창 닫으면 프로그램 종료
-		this.setVisible(true);//윈도우 창에 띄우기
 	}
 }

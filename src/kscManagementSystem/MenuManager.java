@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
@@ -24,7 +25,8 @@ public class MenuManager {
 		else {
 			workerManager.input =input;//객체연결
 		}
-
+		
+		WindowFrame frame = new WindowFrame(workerManager);//WindowFrame 연결
 		selectMenu(input, workerManager);
 		putObject(workerManager, "workermanager.ser");//putObject 함수 실행
 	}

@@ -8,6 +8,7 @@ import worker.BusanWorker;
 import worker.GwangjuWorker;
 import worker.JinjuWorker;
 import worker.SeoulWorker;
+import worker.Worker;
 import worker.WorkerInput;
 import worker.Workerlocation;
 
@@ -142,6 +143,14 @@ public class WorkerManager implements Serializable {//Serializable 구현하겠다.
 		for(int i=0;i<workers.size();i++) {//workers의 크기만큼 반복
 			workers.get(i).printInfo();//printInfo 출력
 		}
+	}
+	
+	public int size() {//size 함수 생성
+		return workers.size();
+	}
+	
+	public WorkerInput get(int index) {//WorkerInput get 함수 생성
+		return (Worker) workers.get(index);
 	}
 
 	public void showEditMenu() {
