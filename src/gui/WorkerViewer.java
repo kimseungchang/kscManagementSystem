@@ -28,7 +28,7 @@ public class WorkerViewer extends JPanel {//JPanel 상속받는다.
 		model.addColumn("Email");
 		model.addColumn("Phone");
 		model.addColumn("Age");
-		model.addColumn("Contect Info.");
+		//model.addColumn("Contect Info.");
 		
 		for(int i=0;i<workerManager.size();i++) {//workerManager 크기만큼 반복한다.
 			Vector row = new Vector();//Vector 로 넣어준다.

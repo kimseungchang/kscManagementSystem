@@ -20,7 +20,7 @@ public class WindowFrame extends JFrame {
 		workeradder = new WorkerAdder(this);//WorkerAdder 객체 생성
 		workerviewer = new WorkerViewer(this, this.workerManager);//WorkerViewer 객체 생성
 		
-		this.setupPanel(menuselection);//menuselection으로 채우기
+		this.add(menuselection);//menuselection으로 채우기
 
 		this.setVisible(true);//윈도우 창에 띄우기
 	}
