@@ -23,6 +23,16 @@ public class WorkerManager implements Serializable {//Serializable 구현하겠다.
 	WorkerManager(Scanner input){//WorkerManager 생성자 선언
 		this.input = input;//모든 메소드에서 input 사용할 수 있게 한다.
 	}
+	
+	public void addWorker(String id, String name, String email, String phone, String age) {
+		WorkerInput workerInput = new SeoulWorker(Workerlocation.Seoul);
+		workerInput.getUserInput(input);
+		workers.add(workerInput);
+	}
+	
+	public void addWorker(WorkerInput workerInput) {
+		workers.add(workerInput);
+	}
 
 	public void addWorker() {//worker 추가
 		int location=0;

@@ -17,7 +17,7 @@ public class WindowFrame extends JFrame {
 		
 		this.workerManager = workerManager;
 		menuselection = new MenuSelection(this);//MenuSelection 按眉 积己
-		workeradder = new WorkerAdder(this);//WorkerAdder 按眉 积己
+		workeradder = new WorkerAdder(this, this.workerManager);//WorkerAdder 按眉 积己
 		workerviewer = new WorkerViewer(this, this.workerManager);//WorkerViewer 按眉 积己
 		
 		this.add(menuselection);//menuselection栏肺 盲快扁

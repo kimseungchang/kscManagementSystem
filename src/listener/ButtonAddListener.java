@@ -19,8 +19,12 @@ public class ButtonAddListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {//actionPerformed 함수 생성
-		JButton b = (JButton)e.getSource();//button 추가
-		WorkerAdder adder = frame.getWorkeradder();
-		frame.setupPanel(adder);
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(frame.getWorkeradder());
+		frame.revalidate();
+		frame.repaint();
+	//	JButton b = (JButton)e.getSource();//button 추가
+	//	WorkerAdder adder = frame.getWorkeradder();
+	//	frame.setupPanel(adder);
 	}
 }

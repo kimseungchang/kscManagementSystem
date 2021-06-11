@@ -9,12 +9,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import kscManagementSystem.WorkerManager;
+import listener.WorkerAdderCancelListener;
+import listener.WorkerAdderListener;
+
 public class WorkerAdder extends JPanel {//JPanel 상속받는다.
 	
 	WindowFrame frame;
+	WorkerManager workerManager;
 
-	public WorkerAdder(WindowFrame frame) {//WorkerAdder 생성자 생성
+	public WorkerAdder(WindowFrame frame, WorkerManager workerManager) {//WorkerAdder 생성자 생성
 		this.frame = frame;
+		this.workerManager = workerManager;
 		
 		JPanel panel = new JPanel();//패널 생성
 		panel.setLayout(new SpringLayout());
@@ -46,11 +52,17 @@ public class WorkerAdder extends JPanel {//JPanel 상속받는다.
 		JLabel labelAge = new JLabel("Age: ",JLabel.TRAILING);//Identifies the trailing edge of text for use with left-to-rightand right-to-left languages. Used by buttons and labels.
 		JTextField fieldAge = new JTextField(10);//JTextField 생성
 		labelID.setLabelFor(fieldAge);
+		
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new WorkerAdderListener(fieldID,fieldName,fieldEmail,fieldPhone,fieldAge,workerManager));
+		JButton cancelButton = new JButton("cancel");
+		cancelButton.addActionListener(new WorkerAdderCancelListener(frame));
+		
 		panel.add(labelAge);//패널에 추가
 		panel.add(fieldAge);//패널에 추가
 		
-		panel.add(new JButton("save"));//패널에 버튼추가
-		panel.add(new JButton("cancel"));//패널에 버튼추가
+		panel.add(saveButton);//패널에 버튼추가
+		panel.add(cancelButton);//패널에 버튼추가
 		
 		SpringUtilities.makeCompactGrid(panel,6,2,6,6,6,6);
 		

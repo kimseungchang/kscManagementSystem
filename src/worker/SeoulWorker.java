@@ -21,5 +21,4 @@ public class SeoulWorker extends Worker {
 		//location, id, name, email. phone, age Ãâ·Â
 
 	}
-
 }

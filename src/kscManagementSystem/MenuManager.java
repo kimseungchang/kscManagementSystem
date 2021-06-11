@@ -28,6 +28,7 @@ public class MenuManager {
 		
 		WindowFrame frame = new WindowFrame(workerManager);//WindowFrame 연결
 		selectMenu(input, workerManager);
+		System.out.println("test");
 		putObject(workerManager, "workermanager.ser");//putObject 함수 실행
 	}
 
@@ -76,6 +77,7 @@ public class MenuManager {
 		System.out.println("5. Exit"); 
 		System.out.println("Select one number between 1-5:");
 	}
+	
 	public static WorkerManager getObject(String filename) {//getObject 생성
 		WorkerManager workerManager=null;
 		try {
